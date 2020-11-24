@@ -28,7 +28,7 @@
           <li class="logged-in" style="display: none">
             <a href="#" class="grey-text" id="logout">Logout</a>
           </li>
-          <li class="logged-in" style="display: none">
+          <li class="admin" style="display: none">
             <a
               href="#"
               class="grey-text modal-trigger"
@@ -55,6 +55,14 @@
         </ul>
       </div>
     </nav>
+    <!--make an admin form -->
+    <form
+      class="center-align admin-actions admin"
+      style="margin: 40px auto; max-width: 300px; display: none"
+    >
+      <input type="email" id="admin-email" placeholder="User Email" required />
+      <button class="btn-small yellow darken-2 z-depth-0">Make admin</button>
+    </form>
 
     <!-- SIGN UP MODAL -->
     <div id="modal-signup" class="modal">
@@ -75,6 +83,7 @@
             <label for="signup-bio">One LIne bio</label>
           </div>
           <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+          <p class="error pink-text center-align"></p>
         </form>
       </div>
     </div>
@@ -94,6 +103,7 @@
             <label for="login-password">Your password</label>
           </div>
           <button class="btn yellow darken-2 z-depth-0">Login</button>
+          <p class="error pink-text center-align"></p>
         </form>
       </div>
     </div>
@@ -138,6 +148,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-functions.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
@@ -157,6 +168,7 @@
 
       const auth = firebase.auth();
       const db = firebase.firestore();
+      const functions = firebase.functions();
 
       //update firestore settings
       db.settings({ timestampsInSnapshots: true });
